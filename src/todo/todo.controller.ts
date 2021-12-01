@@ -3,18 +3,18 @@ import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
 import { TodoService } from './todo.service';
 
-@Controller('todo')
+@Controller('todos')
 export class TodoController {
 
     constructor(private readonly service: TodoService){}
 
     /*request naar herokuapp.com/todos */
-
     @Get()
     async index() {
         return await this.service.findAll();
     }
 
+    /*request naar herokuapp.com/todos/id */
     @Get(':id')
     async find(@Param('id') id: string) {
       return await this.service.findOne(id);
